@@ -2,7 +2,6 @@
 node {
     def build_ok = true
         stage("Prepare") {
-            sh 'chmod +x gradlew'
             sh 'java -jar ./artifacts/app-ibank-build-for-testers.jar &'
         }
     try{
