@@ -1,5 +1,6 @@
 from page.BaseApp import BasePage
 from selenium.webdriver.common.by import By
+from page.VerificationPage import VerificationPage
 
 
 class LoginPage(BasePage):
@@ -16,3 +17,4 @@ class LoginPage(BasePage):
         self.find_element(self.__login_field_locator).send_keys(user_login)
         self.find_element(self.__password_field_locator).send_keys(user_password)
         self.find_element(self.__button_locator).click()
+        return VerificationPage(self.driver)
