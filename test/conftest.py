@@ -7,7 +7,7 @@ from selenium.webdriver.chrome.service import Service
 @pytest.fixture(scope="session")
 def driver():
     options = Options()
-    # options.add_argument('--headless')
+    options.add_argument('--headless')
     driver = webdriver.Chrome(service=Service(), options=options)
     yield driver
     driver.quit()
