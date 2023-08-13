@@ -14,15 +14,5 @@ pipeline {
                 }
             }
         }
-        stage("Generate Reports") {
-            steps{
-                allure ([
-                includeProperties: false,
-                properties: [],
-                reportBuildPolicy: 'ALWAYS',
-                results: [[path: 'allure-report']]
-                ])
-            }
-        }
     }
 }
