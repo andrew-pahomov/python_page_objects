@@ -11,9 +11,20 @@ pipeline {
         stage("Run tests") {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh 'python3.11 -m pytest'
+                    sh 'python3.11 -m pytest --alluredir=allure-report'
                 }
             }
         }
+        stage('Reports') {
+            steps {
+                allure([
+      	        includeProperties: false,
+      	        jdk: '',
+      	        properties: [],
+      	        reportBuildPolicy: 'ALWAYS',
+      	        results: [[path: 'allure-report']]
+    	        ])
+  	        }
+         }
     }
 }
