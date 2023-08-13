@@ -2,6 +2,7 @@
 node {
     def build_ok = true
         stage("Prepare") {
+            sh 'ls'
             sh 'java -jar ./artifacts/app-ibank-build-for-testers.jar &'
         }
     try{
