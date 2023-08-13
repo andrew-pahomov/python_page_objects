@@ -1,9 +1,11 @@
+import allure
 import pytest
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
 
+@allure.step('Открытие страницы в браузере')
 @pytest.fixture(scope="session")
 def driver():
     options = Options()

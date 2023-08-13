@@ -1,10 +1,14 @@
+import allure
+
 from page.LoginPage import LoginPage
 from data.DataHelper import Helper
 from data.DataHelper import get_valid_amount
 from pytest_check import check
 
 
-def test_transfer_from1to2(driver):
+@allure.suite('Перевод средств между своими картами')
+@allure.story('Перевод случайной валидной сумму со второй карты на первую')
+def test_transfer_from2to1(driver):
     login_page = LoginPage(driver, 'http://localhost:9999/')
     user = Helper.get_user()
     verification_page = login_page.valid_login(user.login, user.password)
