@@ -6,7 +6,7 @@ node {
         }
     try{
         stage('Run tests') {
-            sh 'pytest'
+            sh 'python3.11 -m pytest'
         }
     } catch(e) {
         build_ok = false
