@@ -1,20 +1,18 @@
 #!groovy
-node {
-    def build_ok = true
+pipeline {
+    agent any
+    stages {
         stage("Prepare") {
-            sh 'java -jar ./artifacts/app-ibank-build-for-testers.jar &'
+            steps {
+                sh 'java -jar ./artifacts/app-ibank-build-for-testers.jar &'
+            }
         }
-    try{
-        stage('Run tests') {
-            sh 'python3.11 -m pytest'
+        stage("Run tests") {
+            steps {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh 'python3.11 -m pytest'
+                }
+            }
         }
-    } catch(e) {
-        build_ok = false
-        echo e.toString()
-    }
-    if(build_ok) {
-        currentBuild.result = "SUCCESS"
-    } else {
-        currentBuild.result = "FAILURE"
     }
 }
