@@ -5,8 +5,6 @@ pipeline {
         stage("Prepare") {
             steps {
                 sh 'java -jar ./artifacts/app-ibank-build-for-testers.jar &'
-            }
-            steps {
                 sleep time: 5000, unit: 'MILLISECONDS'
             }
         }
