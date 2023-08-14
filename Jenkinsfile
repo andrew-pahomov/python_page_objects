@@ -12,7 +12,7 @@ pipeline {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     sh 'python3.11 -m pytest --alluredir=allure-report'
-                    sleep time: 5000, unit: 'MILLISECONDS'
+                    sleep time: 150000, unit: 'MILLISECONDS'
                 }
             }
         }
