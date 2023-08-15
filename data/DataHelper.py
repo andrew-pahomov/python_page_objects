@@ -1,9 +1,10 @@
-from dataclasses import dataclass
 import random
+from dataclasses import dataclass
 
 
 def get_valid_amount(balance):
-    return random.randint(1,balance)
+    return random.randint(1, balance)
+
 
 @dataclass(frozen=True)
 class User:

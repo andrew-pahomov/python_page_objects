@@ -5,6 +5,7 @@ pipeline {
     stages {
         stage("Prepare") {
             steps {
+                sh 'rm ./allure-report/*'
                 sh 'java -jar ./artifacts/app-ibank-build-for-testers.jar &'
                 sleep time: 5000, unit: 'MILLISECONDS'
             }
@@ -18,16 +19,5 @@ pipeline {
             }
         }
 
-        stage("Generate Reports") {
-            steps {
-                allure ([
-                includeProperties: false,
-                jdk: '',
-                properties: [],
-                reportBuildPolicy: 'ALWAYS',
-                results: [[path: './allure-report']]
-                ])
-            }
-        }
     }
 }

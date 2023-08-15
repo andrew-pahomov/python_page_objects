@@ -1,6 +1,7 @@
 import allure
-from page.BaseApp import BasePage
 from selenium.webdriver.common.by import By
+
+from page.BaseApp import BasePage
 from page.VerificationPage import VerificationPage
 
 
@@ -19,4 +20,5 @@ class LoginPage(BasePage):
         self.find_element(self.__login_field_locator).send_keys(user_login)
         self.find_element(self.__password_field_locator).send_keys(user_password)
         self.find_element(self.__button_locator).click()
+        self.make_creenshot()
         return VerificationPage(self.driver)

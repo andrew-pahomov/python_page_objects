@@ -1,9 +1,9 @@
 import allure
+from pytest_check import check
 
-from page.LoginPage import LoginPage
 from data.DataHelper import Helper
 from data.DataHelper import get_valid_amount
-from pytest_check import check
+from page.LoginPage import LoginPage
 
 
 @allure.suite('Перевод средств между своими картами')

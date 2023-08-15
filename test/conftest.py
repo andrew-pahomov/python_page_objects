@@ -1,7 +1,7 @@
 import allure
 import pytest
-from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 
 
@@ -15,5 +15,5 @@ def driver():
     options.add_argument('--disable-gpu')
     driver = webdriver.Chrome(service=Service(), options=options)
     yield driver
+    driver.close()
     driver.quit()
-
