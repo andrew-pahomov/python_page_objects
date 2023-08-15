@@ -20,14 +20,7 @@ pipeline {
 
         stage('Allure Report') {
             steps{
-                 allure ([
-                        includeProperties: false,
-                        jdk: '',
-                        properties: [],
-                        reportBuildPolicy: 'ALWAYS',
-                        report: 'allure-report/html/'
-                        results: [[path: 'allure-report/json']]
-                ])
+                 allure includeProperties: false, jdk: '', report: 'allure-report/html/', results: [[path: 'allure-report/json']]
             }
         }
     }
