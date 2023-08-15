@@ -18,13 +18,17 @@ pipeline {
             }
         }
 
-        post('Allure Report') {
-            always{
-                script{
-                    allure includeProperties: false, jdk: '', report: 'allure-report/html/', results: [[path: 'allure-report/json']]
-                }
+        stage('Allure Report') {
+            steps{
+                 allure ([
+                        includeProperties: false,
+                        jdk: '',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        report: 'allure-report/html/'
+                        results: [[path: 'allure-report/json']]
+                ])
             }
         }
-
     }
 }
