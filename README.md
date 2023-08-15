@@ -1,0 +1,1 @@
+[![Build Status](http://91.200.151.152:8080/buildStatus/icon?job=python_page_objects)](http://91.200.151.152:8080/job/python_page_objects/)
