@@ -13,7 +13,15 @@ pipeline {
         stage("Run tests") {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh 'python3.11 -m pytest --alluredir=./allure-report'
+                    sh 'python3.11 -m pytest --alluredir=./allure-report/json --clean-alluredir'
+                }
+            }
+        }
+
+        post('Allure Report') {
+            always{
+                script{
+                    allure includeProperties: false, jdk: '', report: 'allure-report/html/', results: [[path: 'allure-report/json']]
                 }
             }
         }
